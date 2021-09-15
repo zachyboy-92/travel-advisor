@@ -4,6 +4,7 @@ import Navbar from "./components/Navbar";
 import Home from "./components/Home";
 import Travel from "./components/Travel";
 import Contact from "./components/Contact";
+import Footer from "./components/Footer";
 import "./App.css";
 
 function App() {
@@ -16,6 +17,7 @@ function App() {
         <Route path="/travel" component={Travel} />
         <Route path="/contact" component={Contact} />
       </Switch>
+      <Footer />
     </div>
   );
 }
