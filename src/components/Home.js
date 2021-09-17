@@ -1,9 +1,15 @@
 import React from "react";
+import "./styles/Home.css";
+import giphy from "./images/giphy.gif";
 
 function Home() {
   return (
-    <div>
-      <h1>Home</h1>
+    <div className="home-container">
+      <img id="giphy" src={giphy} alt="" />
+      <p>
+        TravelAdvisor provides you with information on countries you wish to
+        travel to
+      </p>
     </div>
   );
 }
