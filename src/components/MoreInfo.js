@@ -2,7 +2,7 @@ import { useEffect, useState, useContext } from "react";
 import { StoreValue } from "./Travel";
 import "./styles/MoreInfo.css";
 
-function MoreInfo(props) {
+function MoreInfo() {
   const [otherData, setOtherData] = useState([]);
   const [click, setClick] = useState(false);
   const value = useContext(StoreValue);
@@ -29,9 +29,9 @@ function MoreInfo(props) {
 
   return (
     <div>
-      {otherData.map((dt) => {
+      {otherData.map((dt, index) => {
         return (
-          <div className="more-info__container">
+          <div key={index} className="more-info__container">
             <button id="toggle-info" onClick={clickHandler}>
               {click ? "Hide Extra Info" : "Show Extra Info"}
             </button>

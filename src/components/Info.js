@@ -3,7 +3,7 @@ import { useState, useEffect } from "react/cjs/react.development";
 import "./styles/Info.css";
 import { StoreValue } from "./Travel";
 
-function Info(props) {
+function Info() {
   const [fetchedData, setFetchedData] = useState([]);
   const value = useContext(StoreValue);
 
@@ -16,14 +16,12 @@ function Info(props) {
         .then((data) => setFetchedData(data));
     }
   }, [value]);
-  console.log(fetchedData);
 
   return (
     <div>
-      {fetchedData.map((info) => {
-        console.log(fetchedData);
+      {fetchedData.map((info, index) => {
         return (
-          <div className="country-container">
+          <div key={index} className="country-container">
             <div>
               <img id="flag-logo" src={info.flag} alt="country-flag" />
             </div>

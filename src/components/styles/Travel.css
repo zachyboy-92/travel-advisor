@@ -1,3 +1,9 @@
+.container {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
 .info-container {
   width: 35%;
   height: 57vh;

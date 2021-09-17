@@ -1,0 +1,10 @@
+.map {
+  width: 35vw;
+  height: 57vh;
+  border-radius: 10px;
+}
+
+.popup {
+  font-size: 1.2rem;
+  font-weight: 600;
+}
