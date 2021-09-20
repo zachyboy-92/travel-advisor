@@ -1,0 +1,17 @@
+.input-container {
+  margin: 5px auto;
+}
+
+#currency-value {
+  width: 20vw;
+  height: 3vh;
+  border-radius: 10px;
+}
+
+select {
+  margin-left: 5px;
+  padding: 0px 2px;
+  height: 3vh;
+  width: 3vw;
+  border-radius: 10px;
+}
