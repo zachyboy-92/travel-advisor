@@ -1,7 +1,7 @@
 import { useEffect, useState, useContext } from "react";
 import { StoreValue } from "./Travel";
 import L from "leaflet";
-import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
+import { MapContainer, TileLayer, Marker, Popup, useMap } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
 import "./styles/DisplayMap.css";
 
@@ -47,15 +47,23 @@ function DisplayMap() {
     }
   }, [latitude, longitude, value]);
 
+  // Moves to updated coordinates
+  function ChangeView({ center, zoom }) {
+    const map = useMap();
+    map.setView(center, zoom);
+    return null;
+  }
+
   {
-    if (latitude && longitude && value) {
+    if (value && latitude && longitude) {
       return (
         <MapContainer
           center={[latitude, longitude]}
-          zoom={6}
-          scrollWheelZoom={false}
+          zoom={7}
+          scrollWheelZoom={true}
           className="map"
         >
+          <ChangeView center={[latitude, longitude]} zoom={6} />
           <TileLayer
             attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
             url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"

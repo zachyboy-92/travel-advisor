@@ -3,6 +3,7 @@ import Form from "./Form";
 import Info from "./Info";
 import MoreInfo from "./MoreInfo";
 import DisplayMap from "./DisplayMap";
+import CurrencyHolder from "./CurrencyHolder";
 import "./styles/Travel.css";
 
 export const StoreValue = createContext();
@@ -18,6 +19,7 @@ function Travel() {
       <Form onSaveInput={saveValue} />
       <StoreValue.Provider value={inputValue}>
         <div className="container">
+          <CurrencyHolder />
           <div
             className="info-container"
             style={{ display: inputValue ? "block" : "none" }}
