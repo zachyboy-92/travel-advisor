@@ -53,30 +53,25 @@ function DisplayMap() {
     map.setView(center, zoom);
     return null;
   }
-
-  {
-    if (value && latitude && longitude) {
-      return (
-        <MapContainer
-          center={[latitude, longitude]}
-          zoom={7}
-          scrollWheelZoom={true}
-          className="map"
-        >
-          <ChangeView center={[latitude, longitude]} zoom={6} />
-          <TileLayer
-            attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
-            url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-          />
-          <Marker position={[latitude, longitude]} icon={myIcon}>
-            <Popup className="popup">{value}</Popup>
-          </Marker>
-        </MapContainer>
-      );
-    } else {
-      return <p></p>;
-    }
-  }
+  return value && latitude && longitude ? (
+    <MapContainer
+      center={[latitude, longitude]}
+      zoom={7}
+      scrollWheelZoom={true}
+      className="map"
+    >
+      <ChangeView center={[latitude, longitude]} zoom={6} />
+      <TileLayer
+        attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+      />
+      <Marker position={[latitude, longitude]} icon={myIcon}>
+        <Popup className="popup">{value}</Popup>
+      </Marker>
+    </MapContainer>
+  ) : (
+    <p></p>
+  );
 }
 
 export default DisplayMap;

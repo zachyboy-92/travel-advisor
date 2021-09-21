@@ -3,7 +3,7 @@ import { useState, useEffect } from "react/cjs/react.development";
 import "./styles/Info.css";
 import { StoreValue } from "./Travel";
 
-function Info() {
+function Info(props) {
   const [fetchedData, setFetchedData] = useState([]);
   const value = useContext(StoreValue);
 
@@ -16,6 +16,8 @@ function Info() {
         .then((data) => setFetchedData(data));
     }
   }, [value]);
+
+  props.onSaveData(fetchedData);
 
   return (
     <div>
