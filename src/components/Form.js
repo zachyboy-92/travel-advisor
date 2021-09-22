@@ -1,7 +1,9 @@
 import { useEffect, useRef } from "react";
+import { useState } from "react/cjs/react.development";
 import "./styles/Form.css";
 
 function Form(props) {
+  const [formSubmitted, setFormSubmitted] = useState(false);
   const inputRef = useRef();
 
   useEffect(() => {
@@ -12,7 +14,14 @@ function Form(props) {
     e.preventDefault();
     props.onSaveInput(inputRef.current.value);
     inputRef.current.value = "";
+    setFormSubmitted(!formSubmitted);
   };
+
+  if (formSubmitted) {
+    props.onSaveFormSubmitted(formSubmitted);
+  } else {
+    props.onSaveFormSubmitted(false);
+  }
 
   return (
     <form onSubmit={handleSubmit}>

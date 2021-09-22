@@ -3,7 +3,7 @@ import Form from "./Form";
 import Info from "./Info";
 import MoreInfo from "./MoreInfo";
 import DisplayMap from "./DisplayMap";
-// import CurrencyHolder from "./CurrencyHolder";
+import CurrencyHolder from "./CurrencyHolder";
 import Translation from "./Translation";
 import "./styles/Travel.css";
 
@@ -12,6 +12,8 @@ export const StoreValue = createContext();
 function Travel() {
   const [inputValue, setInputValue] = useState("");
   const [fetchedData, setFetchedData] = useState("");
+  const [recievedFormSubmitted, setRecievedFormSubmitted] = useState();
+  // const [recievedInputValue, setRecievedInputValue] = useState();
 
   const saveValue = (enteredValue) => {
     return setInputValue(enteredValue.toLowerCase());
@@ -21,13 +23,29 @@ function Travel() {
     return setFetchedData(data);
   };
 
+  const saveFormSubmitted = (value) => {
+    return setRecievedFormSubmitted(value);
+  };
+
   return (
     <div>
-      <Form onSaveInput={saveValue} />
+      <Form onSaveInput={saveValue} onSaveFormSubmitted={saveFormSubmitted} />
       <StoreValue.Provider value={inputValue}>
         <div className="container">
-          {/* <CurrencyHolder onFetchedData={fetchedData} /> */}
-          <Translation onFetchedData={fetchedData} />
+          <div className="currency-holder">
+            <CurrencyHolder
+              onFetchedData={fetchedData}
+              isSubmitted={recievedFormSubmitted}
+              storedInput={inputValue}
+            />
+          </div>
+          <div className="translation">
+            <Translation
+              onFetchedData={fetchedData}
+              isSubmitted={recievedFormSubmitted}
+              storedInput={inputValue}
+            />
+          </div>
           <div
             className="info-container"
             style={{ display: inputValue ? "block" : "none" }}
@@ -35,7 +53,9 @@ function Travel() {
             <Info value={inputValue} onSaveData={saveData} />
             <MoreInfo value={inputValue} />
           </div>
-          <DisplayMap />
+          <div className="display-map">
+            <DisplayMap />
+          </div>
         </div>
       </StoreValue.Provider>
     </div>

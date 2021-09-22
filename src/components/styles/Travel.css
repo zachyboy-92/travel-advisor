@@ -1,12 +1,13 @@
 .container {
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
+  display: grid;
+  grid-template-columns: repeat(10, 1fr);
+  grid-template-rows: repeat(7, 1fr);
+  grid-gap: 10px;
 }
 
 .info-container {
-  width: 35%;
-  height: 57vh;
+  grid-column: 2 / span 4;
+  grid-row: 3 / span 4;
   overflow-y: scroll;
   border: 1px solid black;
   background-color: wheat;
@@ -28,4 +29,21 @@
   background-color: darkgrey;
   outline: 1px solid slategrey;
   border-radius: 10px;
+}
+
+/* Currency Holder */
+.currency-holder {
+  grid-column: 2 / span 4;
+  grid-row: 1 / span 3;
+}
+
+/* Translation */
+.translation {
+  grid-column: 6 / span 3;
+  grid-row: 1 / span 3;
+}
+
+.display-map {
+  grid-column: 6 / span 4;
+  grid-row: 3 / span 4;
 }
