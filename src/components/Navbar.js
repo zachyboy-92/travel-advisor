@@ -20,10 +20,10 @@ function Navbar() {
         <Link className="link" to="/Contact">
           Contact
         </Link>
-        <label className="switch">
+        {/* <label className="switch">
           <input type="checkbox" />
           <span className="slider round"></span>
-        </label>
+        </label> */}
       </div>
     </div>
   );
