@@ -17,7 +17,17 @@ function Info(props) {
     }
   }, [value]);
 
-  props.onSaveData(fetchedData);
+  // useEffect(() => {
+  //   if (value === "") {
+  //     return;
+  //   } else {
+  //     fetch(`https://restcountries.com/v3/name/${value}`)
+  //       .then((response) => response.json())
+  //       .then((data) => setFetchedData(data));
+  //   }
+  // }, [value]);
+
+  // props.onSaveData(fetchedData);
 
   return (
     <div>

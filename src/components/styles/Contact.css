@@ -1,21 +1,43 @@
-.contact-form {
-  width: 70%;
-  margin: 10% auto;
-  background-color: blanchedalmond;
-}
-
 form {
   width: 100%;
   display: flex;
   flex-direction: column;
   padding: 10px 0;
 }
+
+.contact-form {
+  width: 70%;
+  margin: 10% auto;
+  background-color: blanchedalmond;
+}
+
+.contact-form input {
+  width: 50%;
+}
+
 label {
   margin: 5px auto;
   font-size: 1.2rem;
   font-weight: 700;
 }
 
-button {
+.contact-form button {
   margin: 10px 0;
+  width: 12%;
+}
+
+#comment {
+  width: 80%;
+}
+
+@media (max-width: 768px) {
+  .contact-form {
+    width: 80%;
+    margin: 10% auto;
+    background-color: blanchedalmond;
+  }
+
+  .contact-form button {
+    width: 15%;
+  }
 }

@@ -24,7 +24,7 @@ function Form(props) {
   }
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form className="form-container" onSubmit={handleSubmit}>
       <input type="text" placeholder="Insert Country" ref={inputRef} />
       <button>Search</button>
     </form>

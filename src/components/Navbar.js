@@ -1,32 +1,49 @@
 import React from "react";
-import { Link } from "react-router-dom";
-import "./styles/Navbar.css";
+import styled from "styled-components";
+import BurgerNavbar from "./BurgerNavbar";
 import logo from "./images/nav-logo.png";
 
-function Navbar() {
+const Nav = styled.nav`
+  width: 100%;
+  height: 55px;
+  border-bottom: 2px solid #f1f1f1;
+  padding: 0 20px;
+  display: flex;
+  justify-content: space-between;
+  background-color: blanchedalmond;
+
+  .logo {
+    padding: 15px 0;
+  }
+
+  #logo-container {
+    display: flex;
+    align-items: center;
+    position: fixed;
+    left: 50px;
+  }
+
+  #logo {
+    width: 100px;
+    height: 50px;
+  }
+
+  #logo-container h3 {
+    font-size: 1.3rem;
+    margin-left: -15px;
+  }
+`;
+
+const Navbar = () => {
   return (
-    <div className="navbar-container">
+    <Nav>
       <div id="logo-container">
         <img id="logo" src={logo} alt="nav-logo" />
         <h3>TravelAdvisor</h3>
       </div>
-      <div id="navigation">
-        <Link className="link" to="/">
-          Home
-        </Link>
-        <Link className="link" to="/Travel">
-          Travel
-        </Link>
-        <Link className="link" to="/Contact">
-          Contact
-        </Link>
-        {/* <label className="switch">
-          <input type="checkbox" />
-          <span className="slider round"></span>
-        </label> */}
-      </div>
-    </div>
+      <BurgerNavbar />
+    </Nav>
   );
-}
+};
 
 export default Navbar;

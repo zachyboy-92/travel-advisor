@@ -70,7 +70,7 @@ function DisplayMap() {
       </Marker>
     </MapContainer>
   ) : (
-    <p></p>
+    ""
   );
 }
 

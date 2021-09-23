@@ -10,13 +10,16 @@ function CurrencyExchange(props) {
   const [currencyName, setCurrencyName] = useState("");
   const [currencySymbol, setCurrencySymbol] = useState("");
 
+  // Option currency
+  // const [optionCurrencyCode, setOptionCurrencyCode] = useState("");
+  const [optionCurrencyName, setOptionCurrencyName] = useState("");
+
   const [enteredValue, setEnteredValue] = useState("");
   const [selectedOption, setSelectedOption] = useState("");
   const [convertedValue, setConvertedValue] = useState("");
   const [buttonNumber, setButtonNumber] = useState();
   // Data Recieved From CurrencyHolder
   const data = props.onRecievedData;
-  const formSubmitted = props.recievedForm;
   const inputValue = props.recievedInputValue;
   //
   const inputRef = useRef();
@@ -27,7 +30,6 @@ function CurrencyExchange(props) {
       return;
     } else {
       return data.map((dt) => {
-        console.log(dt);
         return dt.currencies.map((currency) => {
           setCurrencyCode(currency.code);
           setCurrencyName(currency.name);
@@ -36,7 +38,6 @@ function CurrencyExchange(props) {
       });
     }
   }, [data]);
-
   // Fetches Currency exchange symbols
   useEffect(() => {
     fetch(
@@ -53,7 +54,7 @@ function CurrencyExchange(props) {
     )
       .then((response) => response.json())
       .then((data) => {
-        setCurrencyOptions([...Object.keys(data.symbols)]);
+        setCurrencyOptions([...Object.entries(data.symbols)]);
       })
       .catch((err) => {
         console.error(err);
@@ -118,8 +119,8 @@ function CurrencyExchange(props) {
           <select onChange={handleOptionChange} value={selectedOption}>
             {currencyOptions.map((option, index) => {
               return (
-                <option key={index} id="currency-option" value={option}>
-                  {`${option}`}
+                <option key={index} id="currency-option" value={option[0]}>
+                  {`${option[0]}: ${option[1]}`}
                 </option>
               );
             })}

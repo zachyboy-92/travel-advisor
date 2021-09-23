@@ -1,16 +1,85 @@
-.home-container {
+.about-container {
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
+  justify-content: space-around;
+  height: 35vh;
 }
 
 #giphy {
-  width: 500px;
-  height: 500px;
+  width: 200px;
+  height: 200px;
 }
 
 .home-container p {
-  font-size: 1.3rem;
+  text-align: center;
+  font-size: 1.2rem;
   width: 50%;
+}
+
+/* Services */
+.services-container h2 {
+  text-align: center;
+  text-decoration: underline;
+  background-color: blanchedalmond;
+  width: 40%;
+  margin: 2rem auto;
+}
+
+.services {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-wrap: wrap;
+  margin: 2rem auto;
+}
+
+.service-container {
+  border: 1px solid black;
+  width: 22%;
+  height: 40vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+}
+
+@media (max-width: 768px) {
+  .services {
+    padding-bottom: 4rem;
+  }
+
+  .service-container {
+    width: 40%;
+    margin-bottom: 1rem;
+  }
+
+  .services-container h2 {
+    margin-top: 2rem;
+  }
+
+  .home-container p {
+    text-align: center;
+    font-size: 1.2rem;
+    width: 70%;
+  }
+}
+
+.service-type {
+  background-color: blanchedalmond;
+  margin: 1rem auto;
+}
+
+.service-logo {
+  width: 150px;
+  height: 150px;
+}
+
+.service-container p {
+  width: 100%;
+  margin: 0.5rem auto;
+}
+
+.service-type h3 {
+  text-decoration: underline;
 }
