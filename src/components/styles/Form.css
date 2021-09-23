@@ -26,3 +26,13 @@ form button {
   background-color: rgb(38, 41, 43);
   color: white;
 }
+
+.form-container input {
+  margin-bottom: 5px;
+}
+
+@media (max-width: 768px) {
+  form input {
+    width: 60%;
+  }
+}

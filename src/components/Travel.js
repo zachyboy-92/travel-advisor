@@ -13,7 +13,6 @@ function Travel() {
   const [inputValue, setInputValue] = useState("");
   const [fetchedData, setFetchedData] = useState("");
   const [recievedFormSubmitted, setRecievedFormSubmitted] = useState();
-  // const [recievedInputValue, setRecievedInputValue] = useState();
 
   const saveValue = (enteredValue) => {
     return setInputValue(enteredValue.toLowerCase());

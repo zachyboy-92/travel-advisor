@@ -8,7 +8,7 @@ function Contact() {
 
     emailjs
       .sendForm(
-        "gmail",
+        "service_j097567",
         "template_wcu6yxb",
         e.target,
         "user_mw21lTZBiCJzPGeXCHxw2"
@@ -27,15 +27,15 @@ function Contact() {
   return (
     <div className="contact-form">
       <form onSubmit={sendEmail}>
-        <label for="first_name">First Name</label>
+        <label htmlFor="first_name">First Name</label>
         <input id="first_name" type="text" name="first_name" required />
-        <label for="last_name">Last Name</label>
+        <label htmlFor="last_name">Last Name</label>
         <input type="text" id="last_name" name="last_name" required />
-        <label for="email">Email</label>
+        <label htmlFor="email">Email</label>
         <input type="text" id="email" name="email" required />
-        <label for="subject">Subject</label>
+        <label htmlFor="subject">Subject</label>
         <input type="text" id="subject" name="subject" required />
-        <label for="comment">Leave a comment</label>
+        <label htmlFor="comment">Leave a comment</label>
         <textarea
           name="message"
           id="comment"
