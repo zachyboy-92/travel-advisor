@@ -27,6 +27,10 @@ form button {
   color: white;
 }
 
+.form-container {
+  display: flex;
+}
+
 .form-container input {
   margin-bottom: 5px;
 }
