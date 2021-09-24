@@ -1,4 +1,5 @@
-import { useEffect, useState, useRef } from "react/cjs/react.development";
+import { useEffect, useState, useRef, useContext } from "react";
+import { StoreValue } from "./Travel";
 import "./styles/Translation.css";
 
 function Translation(props) {
@@ -8,28 +9,41 @@ function Translation(props) {
   const [storeInputValue, setStoreInputValue] = useState("");
   const [buttonNumber, setButtonNumber] = useState();
   const inputRef = useRef();
-  const recievedData = props.onFetchedData;
-  const formIsSubmitted = props.isSubmitted;
-  const inputValue = props.storedInput;
+
+  // Passed data from Travel
+  const { input, languageCode } = useContext(StoreValue);
 
   // Language value recieved from FORM
-  useEffect(() => {
-    if (!recievedData) {
-      return;
-    } else {
-      return recievedData.map((data) => {
-        return data.languages.map((language) =>
-          setInputedLanguage(language.iso639_1)
-        );
-      });
-    }
-  }, [recievedData]);
+  // useEffect(() => {
+  //   if (!recievedData) {
+  //     return;
+  //   } else {
+  //     return recievedData.map((data) => {
+  //       return data.languages.map((language) =>
+  //         setInputedLanguage(language.iso639_1)
+  //       );
+  //     });
+  //   }
+  // }, [recievedData]);
+
+  // // Language value recieved from FORM
+  // useEffect(() => {
+  //   if (!recievedData) {
+  //     return;
+  //   } else {
+  //     return recievedData.map((data) => {
+  //       setInputedLanguage(data.languages[2]);
+  //       console.log(inputedLanguage);
+  //     });
+  //   }
+  // }, [recievedData]);
 
   // Fetch Translation data
   useEffect(() => {
-    if ((storeInputValue, inputValue)) {
+    if ((storeInputValue, languageCode)) {
+      console.log(languageCode, storeInputValue);
       fetch(
-        `https://just-translated.p.rapidapi.com/?lang=${inputedLanguage}&text=${storeInputValue}`,
+        `https://just-translated.p.rapidapi.com/?lang=${languageCode}&text=${storeInputValue}`,
         {
           method: "GET",
           headers: {
@@ -41,13 +55,14 @@ function Translation(props) {
       )
         .then((response) => response.json())
         .then((data) => setTranslation(data.text[0]))
+
         .catch((err) => {
           console.error(err);
         });
     } else {
       return;
     }
-  }, [storeInputValue, inputedLanguage, inputValue]);
+  }, [storeInputValue, input]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -63,7 +78,7 @@ function Translation(props) {
   return (
     <div
       className="translation-container"
-      style={{ display: inputValue ? "block" : "none" }}
+      style={{ display: input ? "block" : "none" }}
     >
       <h2>Translator</h2>
       <form className="form-container" onSubmit={handleSubmit}>

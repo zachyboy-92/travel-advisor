@@ -1,14 +1,16 @@
 // import { useContext } from "react";
 // import { StoreOptions } from "./CurrencyHolder";
-import { useEffect, useState, useRef } from "react/cjs/react.development";
+import {
+  useEffect,
+  useState,
+  useRef,
+  useContext,
+} from "react/cjs/react.development";
+import { StoreValue } from "./Travel";
 import "./styles/CurrencyExchange.css";
 
 function CurrencyExchange(props) {
   const [currencyOptions, setCurrencyOptions] = useState([]);
-  // fetched currency data
-  const [currencyCode, setCurrencyCode] = useState("");
-  const [currencyName, setCurrencyName] = useState("");
-  const [currencySymbol, setCurrencySymbol] = useState("");
 
   // Option currency
   // const [optionCurrencyCode, setOptionCurrencyCode] = useState("");
@@ -18,26 +20,11 @@ function CurrencyExchange(props) {
   const [selectedOption, setSelectedOption] = useState("");
   const [convertedValue, setConvertedValue] = useState("");
   const [buttonNumber, setButtonNumber] = useState();
-  // Data Recieved From CurrencyHolder
-  const data = props.onRecievedData;
-  const inputValue = props.recievedInputValue;
-  //
   const inputRef = useRef();
 
-  // Fetches FORM currency value
-  useEffect(() => {
-    if (!data) {
-      return;
-    } else {
-      return data.map((dt) => {
-        return dt.currencies.map((currency) => {
-          setCurrencyCode(currency.code);
-          setCurrencyName(currency.name);
-          setCurrencySymbol(currency.symbol);
-        });
-      });
-    }
-  }, [data]);
+  const { input, currencyCode, currencySymbol, currencyName } =
+    useContext(StoreValue);
+
   // Fetches Currency exchange symbols
   useEffect(() => {
     fetch(
@@ -105,7 +92,7 @@ function CurrencyExchange(props) {
   return (
     <div
       className="currency-container"
-      style={{ display: inputValue ? "block" : "none" }}
+      style={{ display: input ? "block" : "none" }}
     >
       <h2>Currency Exchange</h2>
       <form onSubmit={handleSubmit}>

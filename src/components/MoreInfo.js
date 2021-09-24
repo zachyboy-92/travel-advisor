@@ -5,13 +5,13 @@ import "./styles/MoreInfo.css";
 function MoreInfo() {
   const [otherData, setOtherData] = useState([]);
   const [click, setClick] = useState(false);
-  const value = useContext(StoreValue);
+  const { input } = useContext(StoreValue);
 
   useEffect(() => {
-    if (value === "") {
+    if (input === "") {
       return;
     } else {
-      fetch(`https://api.api-ninjas.com/v1/country?name=${value}`, {
+      fetch(`https://api.api-ninjas.com/v1/country?name=${input}`, {
         method: "GET",
         headers: { "X-Api-Key": "hXZ2xymABNMD27CEvEu9XA==Ez5CzM5nd23ygfpb" },
       })
@@ -21,7 +21,7 @@ function MoreInfo() {
           console.error(err);
         });
     }
-  }, [value]);
+  }, [input]);
 
   const clickHandler = () => {
     setClick(!click);
