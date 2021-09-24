@@ -17,14 +17,14 @@ function DisplayMap() {
   const [coordinates, setCoordinates] = useState([]);
   const [latitude, setLatitude] = useState();
   const [longitude, setLongitude] = useState();
-  let value = useContext(StoreValue);
+  const { input } = useContext(StoreValue);
 
   useEffect(() => {
-    if (!value) {
+    if (!input) {
       return;
     } else {
       fetch(
-        `https://trueway-geocoding.p.rapidapi.com/Geocode?address=${value}&language=en`,
+        `https://trueway-geocoding.p.rapidapi.com/Geocode?address=${input}&language=en`,
         {
           method: "GET",
           headers: {
@@ -45,7 +45,7 @@ function DisplayMap() {
           console.error(err);
         });
     }
-  }, [latitude, longitude, value]);
+  }, [latitude, longitude, input]);
 
   // Moves to updated coordinates
   function ChangeView({ center, zoom }) {
@@ -53,7 +53,7 @@ function DisplayMap() {
     map.setView(center, zoom);
     return null;
   }
-  return value && latitude && longitude ? (
+  return input && latitude && longitude ? (
     <MapContainer
       center={[latitude, longitude]}
       zoom={7}
@@ -66,7 +66,7 @@ function DisplayMap() {
         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
       />
       <Marker position={[latitude, longitude]} icon={myIcon}>
-        <Popup className="popup">{value}</Popup>
+        <Popup className="popup">{input}</Popup>
       </Marker>
     </MapContainer>
   ) : (

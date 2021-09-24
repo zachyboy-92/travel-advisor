@@ -1,61 +1,95 @@
-import { useContext } from "react";
-import { useState, useEffect } from "react/cjs/react.development";
+import { useContext, useState, useEffect } from "react";
 import "./styles/Info.css";
 import { StoreValue } from "./Travel";
 
 function Info(props) {
-  const [fetchedData, setFetchedData] = useState([]);
-  const value = useContext(StoreValue);
+  // const [fetchedData, setFetchedData] = useState([]);
+  const {
+    input,
+    countryName,
+    officialName,
+    flag,
+    capital,
+    region,
+    currencyName,
+    language,
+  } = useContext(StoreValue);
 
-  useEffect(() => {
-    if (value === "") {
-      return;
-    } else {
-      fetch(`https://restcountries.eu/rest/v2/name/${value}`)
-        .then((response) => response.json())
-        .then((data) => setFetchedData(data));
-    }
-  }, [value]);
+  // // Stored values from fetched data
+  // // Name data
+  // const [name, setName] = useState();
+  // const [officialName, setOfficialName] = useState();
+  // // Flag data
+  // const [flag, setFlag] = useState();
+  // // Capital data
+  // const [capital, setCapital] = useState();
+  // // region data
+  // const [region, setRegion] = useState();
+  // // Currency data
+  // const [currencyCode, setCurrencyCode] = useState();
+  // const [currencySymbol, setCurrencySymbol] = useState();
+  // const [currencyName, setCurrencyName] = useState();
+  // const [currency, setCurrency] = useState([]);
+  // // Language data
+  // const [language, setLanguage] = useState();
 
+  // // Fetch data from the Rest countries Api
   // useEffect(() => {
-  //   if (value === "") {
-  //     return;
-  //   } else {
-  //     fetch(`https://restcountries.com/v3/name/${value}`)
-  //       .then((response) => response.json())
-  //       .then((data) => setFetchedData(data));
-  //   }
+  //   fetch(`https://restcountries.com/v3/name/${value}`)
+  //     .then((response) => response.json())
+  //     .then((data) => {
+  //       data.map((dt) => {
+  //         setName(dt.name.common);
+  //         setOfficialName(dt.name.official);
+  //         setFlag(dt.flags[0]);
+  //         setCapital(dt.capital);
+  //         setRegion(dt.region);
+  //         setCurrency([
+  //           ...Object.entries(dt.currencies).map((currency) => {
+  //             setCurrencyName(currency[1].name);
+  //             setCurrencySymbol(currency[1].symbol);
+  //             setCurrencyCode(currency[0]);
+  //           }),
+  //         ]);
+  //         setLanguage([
+  //           Object.values(dt.languages).filter((language, index) => {
+  //             if (index === 0) {
+  //               return true;
+  //             }
+  //             return false;
+  //           }),
+  //         ]);
+  //       });
+  //     })
+  //     .catch((err) => {
+  //       console.error(err);
+  //     });
   // }, [value]);
 
-  // props.onSaveData(fetchedData);
-
   return (
-    <div>
-      {fetchedData.map((info, index) => {
-        return (
-          <div key={index} className="country-container">
-            <div>
-              <img id="flag-logo" src={info.flag} alt="country-flag" />
-            </div>
-            <h3>Name: {info.name}</h3>
-            <h5>
-              <strong>Full-Name:</strong> {info.nativeName}
-            </h5>
-            <p>
-              <strong>Capital:</strong> {info.capital}
-            </p>
-            <p>
-              <strong>Population:</strong> {info.population}
-            </p>
-            <p>
-              <strong>Language:</strong> {info.languages[0].name}
-            </p>
-            <p>
-              <strong>Currency:</strong> {info.currencies[0].name}
-            </p>
-          </div>
-        );
-      })}
+    <div
+      style={{ display: input ? "block" : "none" }}
+      className="country-container"
+    >
+      <div>
+        <img id="flag-logo" src={flag} alt="country-flag" />
+      </div>
+      <h3>Name: {countryName}</h3>
+      <h5>
+        <strong>Full-Name:</strong> {officialName}
+      </h5>
+      <p>
+        <strong>Capital:</strong> {capital}
+      </p>
+      <p>
+        <strong>Region:</strong> {region}
+      </p>
+      <p>
+        <strong>Language:</strong> {language}
+      </p>
+      <p>
+        <strong>Currency:</strong> {currencyName}
+      </p>
     </div>
   );
 }

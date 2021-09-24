@@ -32,9 +32,10 @@
 }
 
 /* Currency Holder */
-.currency-holder {
+.currency-container {
   grid-column: 2 / span 4;
   grid-row: 1 / span 3;
+  background-color: chocolate;
 }
 
 /* Translation */
@@ -43,7 +44,7 @@
   grid-row: 1 / span 3;
 }
 
-.display-map {
+.map {
   grid-column: 6 / span 4;
   grid-row: 3 / span 4;
 }
@@ -69,14 +70,14 @@
   }
 
   /* Currency Holder */
-  .currency-holder {
+  .currency-container {
     grid-column: 2 / span 4;
     grid-row: 3 / span 1;
     height: 35vh;
   }
 
   /* Translation */
-  .display-map {
+  .map {
     grid-column: 2 / span 4;
     grid-row: 4 / span 1;
     height: 35vh;

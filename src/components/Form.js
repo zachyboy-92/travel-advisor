@@ -1,5 +1,4 @@
-import { useEffect, useRef } from "react";
-import { useState } from "react/cjs/react.development";
+import { useEffect, useRef, useState } from "react";
 import "./styles/Form.css";
 
 function Form(props) {
@@ -10,18 +9,20 @@ function Form(props) {
     inputRef.current.focus();
   }, []);
 
+  useEffect(() => {
+    if (formSubmitted) {
+      props.onSaveFormSubmitted(formSubmitted);
+    } else {
+      props.onSaveFormSubmitted(false);
+    }
+  }, [formSubmitted]);
+
   const handleSubmit = (e) => {
     e.preventDefault();
     props.onSaveInput(inputRef.current.value);
     inputRef.current.value = "";
     setFormSubmitted(!formSubmitted);
   };
-
-  if (formSubmitted) {
-    props.onSaveFormSubmitted(formSubmitted);
-  } else {
-    props.onSaveFormSubmitted(false);
-  }
 
   return (
     <form className="form-container" onSubmit={handleSubmit}>
