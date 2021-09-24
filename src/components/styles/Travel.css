@@ -1,18 +1,19 @@
-.container {
+.travel-container {
   display: grid;
-  grid-template-columns: repeat(10, 1fr);
+  grid-template-columns: repeat(6, 1fr);
   grid-template-rows: repeat(7, 1fr);
   grid-gap: 10px;
+  width: 100vw;
 }
 
 .info-container {
-  grid-column: 2 / span 4;
+  grid-column: 2 / span 2;
   grid-row: 3 / span 4;
   overflow-y: scroll;
-  border: 1px solid black;
-  background-color: wheat;
+  background-color: chocolate;
   border-radius: 10px;
   padding-bottom: 10px;
+  height: 61vh;
 }
 
 .info-container::-webkit-scrollbar {
@@ -33,54 +34,52 @@
 
 /* Currency Holder */
 .currency-container {
-  grid-column: 2 / span 4;
+  grid-column: 2 / span 2;
   grid-row: 1 / span 3;
-  background-color: chocolate;
 }
 
 /* Translation */
-.translation {
-  grid-column: 6 / span 3;
+.translation-container {
+  grid-column: 4 / span 2;
   grid-row: 1 / span 3;
 }
 
 .map {
-  grid-column: 6 / span 4;
+  grid-column: 4 / span 2;
   grid-row: 3 / span 4;
 }
 
 @media (max-width: 768px) {
-  .container {
-    grid-template-columns: repeat(6, 1fr);
-    grid-template-rows: repeat(5, 1fr);
+  .travel-container {
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: 50vh 30vh 30vh 70vh;
+    gap: 20px;
   }
 
   .info-container {
-    grid-column: 2 / span 4;
+    grid-column: 2 / span 2;
     grid-row: 1 / span 1;
     width: 70vw;
-    height: 35vh;
+    height: 50vh;
   }
 
-  .translation {
-    grid-column: 2 / span 4;
+  .translation-container {
+    grid-column: 2 / span 2;
     grid-row: 2 / span 1;
-    height: 35vh;
-    margin-top: 1rem;
+    height: 30vh;
   }
 
   /* Currency Holder */
   .currency-container {
-    grid-column: 2 / span 4;
+    grid-column: 2 / span 2;
     grid-row: 3 / span 1;
-    height: 35vh;
+    height: 30vh;
   }
 
   /* Translation */
   .map {
-    grid-column: 2 / span 4;
+    grid-column: 2 / span 2;
     grid-row: 4 / span 1;
-    height: 35vh;
-    margin-top: -20px;
+    width: 70vw;
   }
 }

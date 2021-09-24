@@ -9,58 +9,6 @@ import "./styles/Travel.css";
 
 export const StoreValue = createContext();
 
-// function Travel() {
-//   const [inputValue, setInputValue] = useState("");
-//   const [fetchedData, setFetchedData] = useState("");
-//   const [recievedFormSubmitted, setRecievedFormSubmitted] = useState();
-
-//   const saveValue = (enteredValue) => {
-//     return setInputValue(enteredValue.toLowerCase());
-//   };
-
-//   const saveData = (data) => {
-//     return setFetchedData(data);
-//   };
-
-//   const saveFormSubmitted = (value) => {
-//     return setRecievedFormSubmitted(value);
-//   };
-
-//   return (
-//     <div>
-//       <Form onSaveInput={saveValue} onSaveFormSubmitted={saveFormSubmitted} />
-//       <StoreValue.Provider value={inputValue}>
-//         <div className="container">
-//           <div className="currency-holder">
-//             {/* <CurrencyHolder
-//               onFetchedData={fetchedData}
-//               isSubmitted={recievedFormSubmitted}
-//               storedInput={inputValue}
-//             /> */}
-//           </div>
-//           {/* <div className="translation">
-//             <Translation
-//               onFetchedData={fetchedData}
-//               isSubmitted={recievedFormSubmitted}
-//               storedInput={inputValue}
-//             />
-//           </div> */}
-//           <div
-//             className="info-container"
-//             style={{ display: inputValue ? "block" : "none" }}
-//           >
-//             <Info value={inputValue} onSaveData={saveData} />
-//             <MoreInfo value={inputValue} />
-//           </div>
-//           <div className="display-map">
-//             <DisplayMap />
-//           </div>
-//         </div>
-//       </StoreValue.Provider>
-//     </div>
-//   );
-// }
-
 function Travel(props) {
   // Stored value from FORM
   const [inputValue, setInputValue] = useState("");
@@ -88,37 +36,40 @@ function Travel(props) {
 
   // Fetch data from the Rest countries Api
   useEffect(() => {
-    fetch(`https://restcountries.com/v3/name/${inputValue}`)
-      .then((response) => response.json())
-      .then((data) => {
-        data.map((dt) => {
-          setName(dt.name.common);
-          setOfficialName(dt.name.official);
-          setFlag(dt.flags[0]);
-          setCapital(dt.capital);
-          setRegion(dt.region);
-          setLanguageCode(dt.cca2.toLowerCase());
-          setCurrency([
-            ...Object.entries(dt.currencies).map((currency) => {
-              setCurrencyName(currency[1].name);
-              setCurrencySymbol(currency[1].symbol);
-              setCurrencyCode(currency[0]);
-            }),
-          ]);
-          setLanguage([
-            Object.values(dt.languages).filter((language, index) => {
-              if (index === 0) {
-                return true;
-              }
-              return false;
-            }),
-          ]);
-          //
+    if (inputValue) {
+      fetch(`https://restcountries.com/v3/name/${inputValue}`)
+        .then((response) => response.json())
+        .then((data) => {
+          data.map((dt) => {
+            setName(dt.name.common);
+            setOfficialName(dt.name.official);
+            setFlag(dt.flags[0]);
+            setCapital(dt.capital);
+            setRegion(dt.region);
+            setLanguageCode(dt.cca2.toLowerCase());
+            setCurrency([
+              ...Object.entries(dt.currencies).map((currency) => {
+                setCurrencyName(currency[1].name);
+                setCurrencySymbol(currency[1].symbol);
+                setCurrencyCode(currency[0]);
+              }),
+            ]);
+            setLanguage([
+              Object.values(dt.languages).filter((language, index) => {
+                if (index === 0) {
+                  return true;
+                }
+                return false;
+              }),
+            ]);
+          });
+        })
+        .catch((err) => {
+          console.error(err);
         });
-      })
-      .catch((err) => {
-        console.error(err);
-      });
+    } else {
+      return;
+    }
   }, [inputValue]);
 
   const saveData = (data) => {
@@ -153,15 +104,14 @@ function Travel(props) {
           languageCode: languageCode,
         }}
       >
-        <div className="container">
+        <div className="travel-container">
           <CurrencyExchange />
           <Translation />
-          <div className="info-container">
-            <Info
-            // style={{ display: inputValue ? "block" : "none" }}
-            // value={inputValue}
-            // onSaveData={saveData}
-            />
+          <div
+            className="info-container"
+            style={{ display: inputValue ? "block" : "none" }}
+          >
+            <Info />
             <MoreInfo />
           </div>
           <DisplayMap />

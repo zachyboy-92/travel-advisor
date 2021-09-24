@@ -13,35 +13,9 @@ function Translation(props) {
   // Passed data from Travel
   const { input, languageCode } = useContext(StoreValue);
 
-  // Language value recieved from FORM
-  // useEffect(() => {
-  //   if (!recievedData) {
-  //     return;
-  //   } else {
-  //     return recievedData.map((data) => {
-  //       return data.languages.map((language) =>
-  //         setInputedLanguage(language.iso639_1)
-  //       );
-  //     });
-  //   }
-  // }, [recievedData]);
-
-  // // Language value recieved from FORM
-  // useEffect(() => {
-  //   if (!recievedData) {
-  //     return;
-  //   } else {
-  //     return recievedData.map((data) => {
-  //       setInputedLanguage(data.languages[2]);
-  //       console.log(inputedLanguage);
-  //     });
-  //   }
-  // }, [recievedData]);
-
   // Fetch Translation data
   useEffect(() => {
     if ((storeInputValue, languageCode)) {
-      console.log(languageCode, storeInputValue);
       fetch(
         `https://just-translated.p.rapidapi.com/?lang=${languageCode}&text=${storeInputValue}`,
         {
@@ -62,7 +36,7 @@ function Translation(props) {
     } else {
       return;
     }
-  }, [storeInputValue, input]);
+  }, [storeInputValue, input, languageCode]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -81,7 +55,7 @@ function Translation(props) {
       style={{ display: input ? "block" : "none" }}
     >
       <h2>Translator</h2>
-      <form className="form-container" onSubmit={handleSubmit}>
+      <form className="translation-form__container" onSubmit={handleSubmit}>
         <input id="translation-input" type="text" ref={inputRef} />
         <div className="button-container">
           <button type="submit" onClick={() => setButtonNumber(1)}>

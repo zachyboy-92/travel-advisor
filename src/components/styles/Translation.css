@@ -1,7 +1,7 @@
 .translation-container {
   width: 35vw;
   height: 30vh;
-  background-color: blanchedalmond;
+  background-color: chocolate;
   border-radius: 10px;
 }
 
@@ -13,19 +13,14 @@
 #translation-input {
   width: 70%;
   padding: 1rem;
-  margin-top: 1.7rem;
 }
 
 #translation {
-  width: 80%;
-  margin: 0px auto;
-  padding-bottom: 20px;
   font-size: 1.2rem;
   text-align: center;
 }
 
 .form-container {
-  height: 10vh;
   display: flex;
   flex-direction: column;
   justify-content: space-around;
