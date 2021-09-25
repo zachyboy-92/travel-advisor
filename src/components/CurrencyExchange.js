@@ -11,8 +11,8 @@ function CurrencyExchange(props) {
   const [currencyOptions, setCurrencyOptions] = useState([]);
 
   // Option currency
-  // const [optionCurrencyCode, setOptionCurrencyCode] = useState("");
-  const [optionCurrencyName, setOptionCurrencyName] = useState("");
+  // // const [optionCurrencyCode, setOptionCurrencyCode] = useState("");
+  // const [optionCurrencyName, setOptionCurrencyName] = useState("");
 
   const [enteredValue, setEnteredValue] = useState("");
   const [selectedOption, setSelectedOption] = useState("");
