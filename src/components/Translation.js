@@ -16,8 +16,11 @@ function Translation(props) {
   // Fetch Translation data
   useEffect(() => {
     if ((storeInputValue, languageCode)) {
+      console.log(storeInputValue, languageCode[0].join().slice(0, 2));
       fetch(
-        `https://just-translated.p.rapidapi.com/?lang=${languageCode}&text=${storeInputValue}`,
+        `https://just-translated.p.rapidapi.com/?lang=${languageCode[0]
+          .join()
+          .slice(0, 2)}&text=${storeInputValue}`,
         {
           method: "GET",
           headers: {
