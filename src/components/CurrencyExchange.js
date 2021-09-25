@@ -1,5 +1,3 @@
-// import { useContext } from "react";
-// import { StoreOptions } from "./CurrencyHolder";
 import {
   useEffect,
   useState,

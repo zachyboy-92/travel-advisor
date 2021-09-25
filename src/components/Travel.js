@@ -46,7 +46,6 @@ function Travel(props) {
             setFlag(dt.flags[0]);
             setCapital(dt.capital);
             setRegion(dt.region);
-            setLanguageCode(dt.cca2.toLowerCase());
             setCurrency([
               ...Object.entries(dt.currencies).map((currency) => {
                 setCurrencyName(currency[1].name);
@@ -58,6 +57,14 @@ function Travel(props) {
               Object.values(dt.languages).filter((language, index) => {
                 if (index === 0) {
                   return true;
+                }
+                return false;
+              }),
+            ]);
+            setLanguageCode([
+              Object.keys(dt.languages).filter((code, index) => {
+                if (index === 0) {
+                  return code[0].slice(-1);
                 }
                 return false;
               }),
