@@ -13,7 +13,8 @@
   background-color: chocolate;
   border-radius: 10px;
   padding-bottom: 10px;
-  height: 72vh;
+  height: 52vh;
+  margin-top: 2rem;
 }
 
 .info-container::-webkit-scrollbar {
@@ -67,6 +68,7 @@
     grid-column: 2 / span 2;
     grid-row: 2 / span 1;
     height: 30vh;
+    margin-top: 2rem;
   }
 
   /* Currency Holder */

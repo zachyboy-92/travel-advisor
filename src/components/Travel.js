@@ -3,7 +3,7 @@ import Form from "./Form";
 import Info from "./Info";
 import MoreInfo from "./MoreInfo";
 import DisplayMap from "./DisplayMap";
-import CurrencyExchange from "./CurrencyExchange";
+// import CurrencyExchange from "./CurrencyExchange";
 import Translation from "./Translation";
 import "./styles/Travel.css";
 
@@ -114,7 +114,7 @@ function Travel(props) {
         }}
       >
         <div className="travel-container">
-          <CurrencyExchange />
+          {/* <CurrencyExchange /> */}
           <Translation />
           <div
             className="info-container"
